@@ -28,26 +28,26 @@ exports.getContact = (req, res) => {
 exports.postContact = (req, res) => {
   let fromName;
   let fromEmail;
-  if (!req.user) {
-    req.assert('name', 'Name cannot be blank').notEmpty();
-    req.assert('email', 'Email is not valid').isEmail();
-  }
-  req.assert('currency', 'currency cannot be blank').notEmpty();
+  // if (!req.user) {
+  //   req.assert('name', 'Name cannot be blank').notEmpty();
+  //   req.assert('email', 'Email is not valid').isEmail();
+  // }
+  // req.assert('currency', 'currency cannot be blank').notEmpty();
 
-  const errors = req.validationErrors();
+  // const errors = req.validationErrors();
 
   if (errors) {
     req.flash('errors', errors);
     return res.redirect('/contact');
   }
 
-  if (!req.user) {
-    fromName = req.body.name;
-    fromEmail = req.body.email;
-  } else {
-    fromName = req.user.profile.name || '';
-    fromEmail = req.user.email;
-  }
+  // if (!req.user) {
+  //   fromName = req.body.name;
+  //   fromEmail = req.body.email;
+  // } else {
+  //   fromName = req.user.profile.name || '';
+  //   fromEmail = req.user.email;
+  // }
 
   const mailOptions = {
     to: 'your@email.com',
