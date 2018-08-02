@@ -32,7 +32,7 @@ exports.postContact = (req, res) => {
     req.assert('name', 'Name cannot be blank').notEmpty();
     req.assert('email', 'Email is not valid').isEmail();
   }
-  req.assert('message', 'Message cannot be blank').notEmpty();
+  req.assert('currency', 'currency cannot be blank').notEmpty();
 
   const errors = req.validationErrors();
 
@@ -52,7 +52,7 @@ exports.postContact = (req, res) => {
   const mailOptions = {
     to: 'your@email.com',
     from: `${fromName} <${fromEmail}>`,
-    subject: 'Contact Form | Hackathon Starter',
+    subject: 'Contact Form | Mohaj',
     text: req.body.message
   };
 

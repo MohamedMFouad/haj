@@ -2,19 +2,32 @@ extends layout
 
 block content
   .pb-2.mt-2.mb-4.border-bottom
-    h3 Contact Form for support issue 
+    h3 Covert
 
   form(method='POST')
     input(type='hidden', name='_csrf', value=_csrf)
-    if (unknownUser)
+    if (!unknownUser)
       .form-group.row
-        label(class='col-md-2 col-form-label font-weight-bold', for='name') Name
+        label(class='col-md-2 col-form-label font-weight-bold', for='amount') Amount
         .col-md-8
-          input.form-control(type='text', name='name', id='name', autofocus=true)
+          input.form-control(type='number',maxlength='5', name='amount', id='amount', autofocus=true )
+      .form-group.row
+        label(class='col-md-2 col-form-label font-weight-bold', for='currency') NO.
+        .col-md-8
+          select.form-control(type='text', name='currency', id='currency')
+            option(value='1') SAR
+              option(value='3') USD
+              option(value='5') EGP
+              option(value='4', selected='') EUR
+      .form-group.row
+        label(class='col-md-2 col-form-label font-weight-bold', for='amount2') Amount
+        .col-md-8
+          input.form-control(type='number', name='amount', id='amount', autofocus=true )
       .form-group.row
         label(class='col-md-2 col-form-label font-weight-bold', for='email') NO.
         .col-md-8
-          input.form-control(type='text', name='email', id='email')
+          select.form-control(type='text', name='email', id='email')
+            option(value='volvo') SAR
     .form-group.row
       label(class='col-md-2 col-form-label font-weight-bold', for='message') Please describe the issue
       .col-md-8
@@ -23,4 +36,4 @@ block content
       .offset-md-2.col-md-8.p-1
         button.btn.btn-primary(type='submit')
           i.far.fa-envelope.fa-sm
-          | Send
+          | save 
