@@ -36,18 +36,18 @@ exports.postContact = (req, res) => {
 
   // const errors = req.validationErrors();
 
-  if (errors) {
-    req.flash('errors', errors);
-    return res.redirect('/contact');
-  }
-
-  // if (!req.user) {
-  //   fromName = req.body.name;
-  //   fromEmail = req.body.email;
-  // } else {
-  //   fromName = req.user.profile.name || '';
-  //   fromEmail = req.user.email;
+  // if (errors) {
+  //   req.flash('errors', errors);
+  //   return res.redirect('/contact');
   // }
+
+  if (!req.user) {
+    fromName = req.body.name;
+    fromEmail = req.body.email;
+  } else {
+    fromName = req.user.profile.name || '';
+    fromEmail = req.user.email;
+  }
 
   const mailOptions = {
     to: 'your@email.com',
@@ -58,7 +58,7 @@ exports.postContact = (req, res) => {
 
   transporter.sendMail(mailOptions, (err) => {
     if (err) {
-      req.flash('errors', { msg: err.message });
+       req.flash('errors');
       return res.redirect('/contact');
     }
     req.flash('success', { msg: 'Email has been sent successfully!' });
